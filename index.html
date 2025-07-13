@@ -1,128 +1,189 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Curricular - Bacteriología</title>
+  <title>Malla Curricular Interactiva - Bacteriología</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f3ff;
-      padding: 30px;
+      background: #f2ecf8;
+      padding: 20px;
       max-width: 900px;
       margin: auto;
     }
     h1 {
       text-align: center;
-      color: #800080;
+      color: #6a1b9a;
     }
     .semestre {
-      background-color: #ffffff;
-      border: 2px solid #c79be5;
-      border-radius: 10px;
+      background: white;
+      border: 2px solid #d1b3f3;
+      border-radius: 12px;
       padding: 20px;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
-    h2 {
-      color: #5e2480;
+    label {
+      display: block;
+      margin: 6px 0;
+      padding: 4px 8px;
+      border-radius: 6px;
     }
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
+    label.disabled {
+      opacity: 0.5;
     }
-    li {
-      margin-bottom: 5px;
+    input[type="checkbox"]:disabled + span {
+      color: #aaa;
     }
-    .creditos {
-      color: #555;
-      font-style: italic;
+    input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: green;
     }
+    .basica { background-color: #e0f7fa; }
+    .clinica { background-color: #fff3e0; }
+    .social { background-color: #ede7f6; }
+    .investigacion { background-color: #f3e5f5; }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular - Bacteriología</h1>
+  <h1>Malla Curricular Interactiva - Bacteriología</h1>  <div id="contenedor"></div>  <script>
+    const materias = {
+      "Biología": [],
+      "Competencia Lectora en Inglés I": [],
+      "Informática I": [],
+      "Matemáticas General": [],
+      "Morfología I": [],
+      "Química": [],
 
-  <div class="semestre">
-    <h2>1° Semestre</h2>
-    <ul>
-      <li>Biología <span class="creditos">(5 créditos)</span></li>
-      <li>Competencia Lectora en Inglés I <span class="creditos">(3 créditos)</span></li>
-      <li>Informática I <span class="creditos">(2 créditos)</span></li>
-      <li>Matemáticas General <span class="creditos">(4 créditos)</span></li>
-      <li>Morfología I <span class="creditos">(4 créditos)</span></li>
-      <li>Química <span class="creditos">(5 créditos)</span></li>
-    </ul>
-  </div>
+      "Análisis Instrumental Biomédico": ["Química"],
+      "Bioquímica I": ["Biología", "Química"],
+      "Competencia Lectora en Inglés II": ["Competencia Lectora en Inglés I"],
+      "Estadística": ["Matemáticas General"],
+      "Genética": ["Biología", "Estadística"],
+      "Morfología II": ["Morfología I"],
 
-  <div class="semestre">
-    <h2>2° Semestre</h2>
-    <ul>
-      <li>Análisis Instrumental Biomédico (4 créditos)</li>
-      <li>Bioquímica I (5 créditos)</li>
-      <li>Competencia Lectora en Inglés II (3 créditos)</li>
-      <li>Estadística (4 créditos)</li>
-      <li>Genética (5 créditos)</li>
-      <li>Morfología II (4 créditos)</li>
-    </ul>
-  </div>
+      "Bacteriología I": ["Análisis Instrumental Biomédico", "Genética"],
+      "Fisiología": ["Análisis Instrumental Biomédico", "Genética"],
+      "Inmunología": ["Análisis Instrumental Biomédico", "Genética", "Bioquímica I"],
+      "Epistemología I": [],
+      "Metodología y Técnicas de la Investigación I": ["Estadística"],
 
-  <div class="semestre">
-    <h2>3° Semestre</h2>
-    <ul>
-      <li>Bacteriología I (5 créditos)</li>
-      <li>Epistemología I (3 créditos)</li>
-      <li>Fisiología (3 créditos)</li>
-      <li>Inmunología (5 créditos)</li>
-      <li>Metodología y Técnicas de la Investigación I (4 créditos)</li>
-    </ul>
-  </div>
+      "Bacteriología II": ["Bacteriología I", "Inmunología", "Fisiología"],
+      "Farmacología y Toxicología": ["Genética", "Fisiología"],
+      "Química Clínica I": ["Análisis Instrumental Biomédico", "Genética", "Bioquímica I", "Fisiología"],
+      "Virología": ["Inmunología", "Fisiología"],
+      "Ética": [],
 
-  <div class="semestre">
-    <h2>4° Semestre</h2>
-    <ul>
-      <li>Bacteriología II (5 créditos)</li>
-      <li>Fundamentos de Farmacología y Toxicología (4 créditos)</li>
-      <li>Química Clínica I (6 créditos)</li>
-      <li>Virología (3 créditos)</li>
-      <li>Ética (2 créditos)</li>
-    </ul>
-  </div>
+      "Desarrollo a la Comunidad": ["Metodología y Técnicas de la Investigación I"],
+      "Hematología I": ["Genética", "Inmunología", "Fisiología"],
+      "Parasitología": ["Inmunología", "Fisiología"],
+      "Química Clínica II": ["Química Clínica I"],
+      "Salud Pública": ["Metodología y Técnicas de la Investigación I", "Bacteriología II", "Desarrollo a la Comunidad"],
 
-  <div class="semestre">
-    <h2>5° Semestre</h2>
-    <ul>
-      <li>Desarrollo a la Comunidad (4 créditos)</li>
-      <li>Hematología I (5 créditos)</li>
-      <li>Parasitología (4 créditos)</li>
-      <li>Química Clínica II (6 créditos)</li>
-      <li>Salud Pública (4 créditos)</li>
-    </ul>
-  </div>
+      "Bromatología": ["Bacteriología II"],
+      "Epidemiología": ["Metodología y Técnicas de la Investigación I", "Desarrollo a la Comunidad", "Salud Pública"],
+      "Formación Democrática y Ciudadana": [],
+      "Fundamentos de Administración": ["Salud Pública"],
+      "Hematología II y Banco de Sangre": ["Hematología I"],
+      "Micología": ["Inmunología", "Fisiología"],
 
-  <div class="semestre">
-    <h2>6° Semestre</h2>
-    <ul>
-      <li>Bromatología (5 créditos)</li>
-      <li>Epidemiología (3 créditos)</li>
-      <li>Formación Democrática y Ciudadana (2 créditos)</li>
-      <li>Fundamentos de Administración (4 créditos)</li>
-      <li>Hematología II y Banco de Sangre (5 créditos)</li>
-      <li>Micología (4 créditos)</li>
-    </ul>
-  </div>
+      "Práctica Profesional I": ["Biología", "Química", "Informática I", "Matemáticas General", "Competencia Lectora en Inglés I",
+                                "Análisis Instrumental Biomédico", "Morfología I", "Morfología II", "Estadística",
+                                "Competencia Lectora en Inglés II", "Genética", "Bioquímica I", "Bacteriología I",
+                                "Inmunología", "Fisiología", "Epistemología I", "Metodología y Técnicas de la Investigación I",
+                                "Bacteriología II", "Química Clínica I", "Virología", "Farmacología y Toxicología",
+                                "Ética", "Química Clínica II", "Hematología I", "Parasitología",
+                                "Desarrollo a la Comunidad", "Salud Pública", "Hematología II y Banco de Sangre",
+                                "Micología", "Bromatología", "Epidemiología", "Formación Democrática y Ciudadana",
+                                "Fundamentos de Administración"],
 
-  <div class="semestre">
-    <h2>7° Semestre</h2>
-    <ul>
-      <li>Práctica Profesional I <span class="creditos">(18 créditos)</span></li>
-    </ul>
-  </div>
+      "Práctica Profesional II": ["Práctica Profesional I"]
+    };
 
-  <div class="semestre">
-    <h2>8° Semestre</h2>
-    <ul>
-      <li>Práctica Profesional II <span class="creditos">(18 créditos)</span></li>
-    </ul>
-  </div>
+    const categorias = {
+      "Biología": "basica",
+      "Química": "basica",
+      "Matemáticas General": "basica",
+      "Estadística": "basica",
+      "Bioquímica I": "basica",
+      "Fisiología": "basica",
+      "Genética": "basica",
+      "Análisis Instrumental Biomédico": "basica",
+      "Micología": "clinica",
+      "Hematología I": "clinica",
+      "Hematología II y Banco de Sangre": "clinica",
+      "Parasitología": "clinica",
+      "Virología": "clinica",
+      "Química Clínica I": "clinica",
+      "Química Clínica II": "clinica",
+      "Farmacología y Toxicología": "clinica",
+      "Bacteriología I": "clinica",
+      "Bacteriología II": "clinica",
+      "Bromatología": "clinica",
+      "Salud Pública": "social",
+      "Desarrollo a la Comunidad": "social",
+      "Epidemiología": "social",
+      "Ética": "social",
+      "Formación Democrática y Ciudadana": "social",
+      "Fundamentos de Administración": "social",
+      "Epistemología I": "social",
+      "Competencia Lectora en Inglés I": "basica",
+      "Competencia Lectora en Inglés II": "basica",
+      "Informática I": "basica",
+      "Metodología y Técnicas de la Investigación I": "investigacion",
+      "Práctica Profesional I": "investigacion",
+      "Práctica Profesional II": "investigacion"
+    };
 
-</body>
+    const progreso = JSON.parse(localStorage.getItem('progresoMaterias') || '{}');
+
+    function crearUI() {
+      const contenedor = document.getElementById("contenedor");
+      contenedor.innerHTML = "";
+      let i = 0;
+      for (const [materia, requisitos] of Object.entries(materias)) {
+        const id = "materia_" + i;
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = id;
+        input.dataset.nombre = materia;
+        input.onchange = actualizarEstado;
+
+        const label = document.createElement("label");
+        label.htmlFor = id;
+        const span = document.createElement("span");
+        span.textContent = materia;
+        label.appendChild(input);
+        label.appendChild(span);
+
+        const categoria = categorias[materia] || "";
+        if (categoria) label.classList.add(categoria);
+
+        label.classList.add("disabled");
+
+        if (progreso[materia]) input.checked = true;
+
+        contenedor.appendChild(label);
+        i++;
+      }
+      actualizarEstado();
+    }
+
+    function actualizarEstado() {
+      const checks = document.querySelectorAll("input[type=checkbox]");
+      const estado = {};
+      checks.forEach(chk => {
+        estado[chk.dataset.nombre] = chk.checked;
+      });
+      localStorage.setItem('progresoMaterias', JSON.stringify(estado));
+
+      checks.forEach(chk => {
+        const nombre = chk.dataset.nombre;
+        const requisitos = materias[nombre];
+        const habilitada = requisitos.every(req => estado[req]);
+        chk.disabled = !habilitada;
+        chk.parentElement.classList.toggle("disabled", !habilitada);
+      });
+    }
+
+    crearUI();
+  </script></body>
 </html>
