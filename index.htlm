@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular - Bacteriología</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f3ff;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #800080;
+    }
+    .semestre {
+      background-color: #ffffff;
+      border: 2px solid #c79be5;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    h2 {
+      color: #5e2480;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    .creditos {
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Bacteriología</h1>
+
+  <div class="semestre">
+    <h2>1° Semestre</h2>
+    <ul>
+      <li>Biología <span class="creditos">(5 créditos)</span></li>
+      <li>Competencia Lectora en Inglés I <span class="creditos">(3 créditos)</span></li>
+      <li>Informática I <span class="creditos">(2 créditos)</span></li>
+      <li>Matemáticas General <span class="creditos">(4 créditos)</span></li>
+      <li>Morfología I <span class="creditos">(4 créditos)</span></li>
+      <li>Química <span class="creditos">(5 créditos)</span></li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>2° Semestre</h2>
+    <ul>
+      <li>Análisis Instrumental Biomédico (4 créditos)</li>
+      <li>Bioquímica I (5 créditos)</li>
+      <li>Competencia Lectora en Inglés II (3 créditos)</li>
+      <li>Estadística (4 créditos)</li>
+      <li>Genética (5 créditos)</li>
+      <li>Morfología II (4 créditos)</li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>3° Semestre</h2>
+    <ul>
+      <li>Bacteriología I (5 créditos)</li>
+      <li>Epistemología I (3 créditos)</li>
+      <li>Fisiología (3 créditos)</li>
+      <li>Inmunología (5 créditos)</li>
+      <li>Metodología y Técnicas de la Investigación I (4 créditos)</li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>4° Semestre</h2>
+    <ul>
+      <li>Bacteriología II (5 créditos)</li>
+      <li>Fundamentos de Farmacología y Toxicología (4 créditos)</li>
+      <li>Química Clínica I (6 créditos)</li>
+      <li>Virología (3 créditos)</li>
+      <li>Ética (2 créditos)</li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>5° Semestre</h2>
+    <ul>
+      <li>Desarrollo a la Comunidad (4 créditos)</li>
+      <li>Hematología I (5 créditos)</li>
+      <li>Parasitología (4 créditos)</li>
+      <li>Química Clínica II (6 créditos)</li>
+      <li>Salud Pública (4 créditos)</li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>6° Semestre</h2>
+    <ul>
+      <li>Bromatología (5 créditos)</li>
+      <li>Epidemiología (3 créditos)</li>
+      <li>Formación Democrática y Ciudadana (2 créditos)</li>
+      <li>Fundamentos de Administración (4 créditos)</li>
+      <li>Hematología II y Banco de Sangre (5 créditos)</li>
+      <li>Micología (4 créditos)</li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>7° Semestre</h2>
+    <ul>
+      <li>Práctica Profesional I <span class="creditos">(18 créditos)</span></li>
+    </ul>
+  </div>
+
+  <div class="semestre">
+    <h2>8° Semestre</h2>
+    <ul>
+      <li>Práctica Profesional II <span class="creditos">(18 créditos)</span></li>
+    </ul>
+  </div>
+
+</body>
+</html>
