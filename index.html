@@ -7,24 +7,35 @@
       font-family: Arial, sans-serif;
       background: #f2ecf8;
       padding: 20px;
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
     }
     h1 {
       text-align: center;
       color: #6a1b9a;
+      margin-bottom: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
     .semestre {
       background: white;
-      border: 2px solid #d1b3f3;
+      border: 3px solid #c8a4f1;
       border-radius: 12px;
       padding: 20px;
-      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .semestre h2 {
+      text-align: center;
+      color: #4a0072;
+      margin-bottom: 15px;
     }
     label {
       display: block;
       margin: 6px 0;
-      padding: 4px 8px;
+      padding: 6px 10px;
       border-radius: 6px;
     }
     label.disabled {
@@ -44,7 +55,18 @@
   </style>
 </head>
 <body>
-  <h1>Malla Curricular Interactiva - Bacteriología</h1>  <div id="contenedor"></div>  <script>
+  <h1>Malla Curricular Interactiva - Bacteriología</h1>  <div class="grid" id="contenedor"></div>  <script>
+    const materiasPorSemestre = {
+      "1° Semestre": ["Biología", "Competencia Lectora en Inglés I", "Informática I", "Matemáticas General", "Morfología I", "Química"],
+      "2° Semestre": ["Análisis Instrumental Biomédico", "Bioquímica I", "Competencia Lectora en Inglés II", "Estadística", "Genética", "Morfología II"],
+      "3° Semestre": ["Bacteriología I", "Fisiología", "Inmunología", "Epistemología I", "Metodología y Técnicas de la Investigación I"],
+      "4° Semestre": ["Bacteriología II", "Farmacología y Toxicología", "Química Clínica I", "Virología", "Ética"],
+      "5° Semestre": ["Desarrollo a la Comunidad", "Hematología I", "Parasitología", "Química Clínica II", "Salud Pública"],
+      "6° Semestre": ["Bromatología", "Epidemiología", "Formación Democrática y Ciudadana", "Fundamentos de Administración", "Hematología II y Banco de Sangre", "Micología"],
+      "7° Semestre": ["Práctica Profesional I"],
+      "8° Semestre": ["Práctica Profesional II"]
+    };
+
     const materias = {
       "Biología": [],
       "Competencia Lectora en Inglés I": [],
@@ -52,85 +74,51 @@
       "Matemáticas General": [],
       "Morfología I": [],
       "Química": [],
-
       "Análisis Instrumental Biomédico": ["Química"],
       "Bioquímica I": ["Biología", "Química"],
       "Competencia Lectora en Inglés II": ["Competencia Lectora en Inglés I"],
       "Estadística": ["Matemáticas General"],
       "Genética": ["Biología", "Estadística"],
       "Morfología II": ["Morfología I"],
-
       "Bacteriología I": ["Análisis Instrumental Biomédico", "Genética"],
       "Fisiología": ["Análisis Instrumental Biomédico", "Genética"],
       "Inmunología": ["Análisis Instrumental Biomédico", "Genética", "Bioquímica I"],
       "Epistemología I": [],
       "Metodología y Técnicas de la Investigación I": ["Estadística"],
-
       "Bacteriología II": ["Bacteriología I", "Inmunología", "Fisiología"],
       "Farmacología y Toxicología": ["Genética", "Fisiología"],
       "Química Clínica I": ["Análisis Instrumental Biomédico", "Genética", "Bioquímica I", "Fisiología"],
       "Virología": ["Inmunología", "Fisiología"],
       "Ética": [],
-
       "Desarrollo a la Comunidad": ["Metodología y Técnicas de la Investigación I"],
       "Hematología I": ["Genética", "Inmunología", "Fisiología"],
       "Parasitología": ["Inmunología", "Fisiología"],
       "Química Clínica II": ["Química Clínica I"],
       "Salud Pública": ["Metodología y Técnicas de la Investigación I", "Bacteriología II", "Desarrollo a la Comunidad"],
-
       "Bromatología": ["Bacteriología II"],
       "Epidemiología": ["Metodología y Técnicas de la Investigación I", "Desarrollo a la Comunidad", "Salud Pública"],
       "Formación Democrática y Ciudadana": [],
       "Fundamentos de Administración": ["Salud Pública"],
       "Hematología II y Banco de Sangre": ["Hematología I"],
       "Micología": ["Inmunología", "Fisiología"],
-
-      "Práctica Profesional I": ["Biología", "Química", "Informática I", "Matemáticas General", "Competencia Lectora en Inglés I",
-                                "Análisis Instrumental Biomédico", "Morfología I", "Morfología II", "Estadística",
-                                "Competencia Lectora en Inglés II", "Genética", "Bioquímica I", "Bacteriología I",
-                                "Inmunología", "Fisiología", "Epistemología I", "Metodología y Técnicas de la Investigación I",
-                                "Bacteriología II", "Química Clínica I", "Virología", "Farmacología y Toxicología",
-                                "Ética", "Química Clínica II", "Hematología I", "Parasitología",
-                                "Desarrollo a la Comunidad", "Salud Pública", "Hematología II y Banco de Sangre",
-                                "Micología", "Bromatología", "Epidemiología", "Formación Democrática y Ciudadana",
-                                "Fundamentos de Administración"],
-
+      "Práctica Profesional I": ["Biología", "Química", "Informática I", "Matemáticas General", "Competencia Lectora en Inglés I", "Análisis Instrumental Biomédico", "Morfología I", "Morfología II", "Estadística", "Competencia Lectora en Inglés II", "Genética", "Bioquímica I", "Bacteriología I", "Inmunología", "Fisiología", "Epistemología I", "Metodología y Técnicas de la Investigación I", "Bacteriología II", "Química Clínica I", "Virología", "Farmacología y Toxicología", "Ética", "Química Clínica II", "Hematología I", "Parasitología", "Desarrollo a la Comunidad", "Salud Pública", "Hematología II y Banco de Sangre", "Micología", "Bromatología", "Epidemiología", "Formación Democrática y Ciudadana", "Fundamentos de Administración"],
       "Práctica Profesional II": ["Práctica Profesional I"]
     };
 
     const categorias = {
-      "Biología": "basica",
-      "Química": "basica",
-      "Matemáticas General": "basica",
-      "Estadística": "basica",
-      "Bioquímica I": "basica",
-      "Fisiología": "basica",
-      "Genética": "basica",
-      "Análisis Instrumental Biomédico": "basica",
-      "Micología": "clinica",
-      "Hematología I": "clinica",
-      "Hematología II y Banco de Sangre": "clinica",
-      "Parasitología": "clinica",
-      "Virología": "clinica",
-      "Química Clínica I": "clinica",
-      "Química Clínica II": "clinica",
-      "Farmacología y Toxicología": "clinica",
-      "Bacteriología I": "clinica",
-      "Bacteriología II": "clinica",
-      "Bromatología": "clinica",
-      "Salud Pública": "social",
-      "Desarrollo a la Comunidad": "social",
-      "Epidemiología": "social",
-      "Ética": "social",
-      "Formación Democrática y Ciudadana": "social",
-      "Fundamentos de Administración": "social",
-      "Epistemología I": "social",
-      "Competencia Lectora en Inglés I": "basica",
-      "Competencia Lectora en Inglés II": "basica",
-      "Informática I": "basica",
-      "Metodología y Técnicas de la Investigación I": "investigacion",
-      "Práctica Profesional I": "investigacion",
-      "Práctica Profesional II": "investigacion"
+      "Biología": "basica", "Química": "basica", "Matemáticas General": "basica",
+      "Estadística": "basica", "Bioquímica I": "basica", "Fisiología": "basica",
+      "Genética": "basica", "Análisis Instrumental Biomédico": "basica",
+      "Micología": "clinica", "Hematología I": "clinica", "Hematología II y Banco de Sangre": "clinica",
+      "Parasitología": "clinica", "Virología": "clinica", "Química Clínica I": "clinica",
+      "Química Clínica II": "clinica", "Farmacología y Toxicología": "clinica",
+      "Bacteriología I": "clinica", "Bacteriología II": "clinica", "Bromatología": "clinica",
+      "Salud Pública": "social", "Desarrollo a la Comunidad": "social", "Epidemiología": "social",
+      "Ética": "social", "Formación Democrática y Ciudadana": "social",
+      "Fundamentos de Administración": "social", "Epistemología I": "social",
+      "Competencia Lectora en Inglés I": "basica", "Competencia Lectora en Inglés II": "basica",
+      "Informática I": "basica", "Metodología y Técnicas de la Investigación I": "investigacion",
+      "Práctica Profesional I": "investigacion", "Práctica Profesional II": "investigacion"
     };
 
     const progreso = JSON.parse(localStorage.getItem('progresoMaterias') || '{}');
@@ -138,31 +126,38 @@
     function crearUI() {
       const contenedor = document.getElementById("contenedor");
       contenedor.innerHTML = "";
-      let i = 0;
-      for (const [materia, requisitos] of Object.entries(materias)) {
-        const id = "materia_" + i;
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.id = id;
-        input.dataset.nombre = materia;
-        input.onchange = actualizarEstado;
+      for (const [semestre, listaMaterias] of Object.entries(materiasPorSemestre)) {
+        const div = document.createElement("div");
+        div.className = "semestre";
+        const titulo = document.createElement("h2");
+        titulo.textContent = semestre;
+        div.appendChild(titulo);
 
-        const label = document.createElement("label");
-        label.htmlFor = id;
-        const span = document.createElement("span");
-        span.textContent = materia;
-        label.appendChild(input);
-        label.appendChild(span);
+        listaMaterias.forEach(materia => {
+          const id = "materia_" + materia.replace(/\s+/g, '_');
+          const input = document.createElement("input");
+          input.type = "checkbox";
+          input.id = id;
+          input.dataset.nombre = materia;
+          input.onchange = actualizarEstado;
 
-        const categoria = categorias[materia] || "";
-        if (categoria) label.classList.add(categoria);
+          const label = document.createElement("label");
+          label.htmlFor = id;
+          const span = document.createElement("span");
+          span.textContent = materia;
+          label.appendChild(input);
+          label.appendChild(span);
 
-        label.classList.add("disabled");
+          const categoria = categorias[materia] || "";
+          if (categoria) label.classList.add(categoria);
+          label.classList.add("disabled");
 
-        if (progreso[materia]) input.checked = true;
+          if (progreso[materia]) input.checked = true;
 
-        contenedor.appendChild(label);
-        i++;
+          div.appendChild(label);
+        });
+
+        contenedor.appendChild(div);
       }
       actualizarEstado();
     }
